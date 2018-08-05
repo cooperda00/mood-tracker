@@ -76,6 +76,7 @@ h2 {
     grid-gap: 2px;
     justify-content: center;
     align-content: center;
+    margin: 0 5px 0 5px;
 }
 
 .cell {

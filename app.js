@@ -3,7 +3,7 @@
 //Color value
 let color = '';
 
-//Color Picker
+//Color Picker Buttons
 const red = document.getElementById('red');
 const blue = document.getElementById('blue');
 const yellow = document.getElementById('yellow');
@@ -20,7 +20,7 @@ const days = document.querySelectorAll('.day');
 //---------------------------------------
 //Event Listeners
 
-//Event Listeners for color picker
+//Event Listeners for Color Picker Buttons
 red.addEventListener('click', () => {
     color = 'red';
 });
@@ -53,9 +53,12 @@ white.addEventListener('click', () => {
 document.querySelector('.grid-container').addEventListener('click', changeColor);
 
 function changeColor(e) {
+    //Only targets '.cell day'
     if (e.target.className === 'cell day') {
     e.target.style.background = color;
-    }
+    //Converts to '.cell checked' to prevent accidental changing of color
+    e.target.className = 'cell checked';
+    }   
 }
 
 

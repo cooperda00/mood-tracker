@@ -1,0 +1,90 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background: purple;
+    display: flex;
+    flex-direction: column;
+}
+header {
+    top: 0;
+    width: 100%;
+    background: gray;
+    height: 15vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+header h1 {
+    width: 100%;
+    margin-left: 10px;
+}
+header ul {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0 15px 0 0;
+}
+header ul li {
+    height: 30px;
+    width: 30px;
+    border: 1px solid black;
+    list-style: none;
+    margin: 2px;
+}
+
+#red {
+    background: red;
+}
+#blue {
+    background: blue;
+}
+#yellow {
+    background: yellow;
+}
+#green {
+    background: green;
+}
+#black {
+    background: black;
+}
+#brown {
+    background: brown;
+}
+#purple {
+    background: purple;
+}
+#orange {
+    background: orange;
+}
+#white {
+    background: white;
+}
+
+h2 {
+    text-align: center;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(50px, 100px));
+    grid-template-rows: repeat(6, minmax(50px, 80px));
+    grid-gap: 2px;
+    justify-content: center;
+    align-content: center;
+}
+
+.cell {
+    background: gray;
+    border: 1px solid black;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

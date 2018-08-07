@@ -1,64 +1,47 @@
-//Variables
-
-//Color value
+//Variables:
+//Picked Color 
 let color = '';
-
-//Color Picker Buttons
-const red = document.getElementById('red');
-const blue = document.getElementById('blue');
-const yellow = document.getElementById('yellow');
-const green = document.getElementById('green');
-const black = document.getElementById('black');
-const brown = document.getElementById('brown');
-const purple = document.getElementById('purple');
-const orange = document.getElementById('orange');
-const white = document.getElementById('white');
-
-//Collection of days
+//Button
+const button = document.querySelector('button');
+//Days 
 const days = document.querySelectorAll('.day');
-
-//---------------------------------------
-//Event Listeners
-
-//Event Listeners for Color Picker Buttons
-red.addEventListener('click', () => {
-    color = 'red';
+//--------------------------------------------
+//Event Listeners:
+//Finds CSS backgroud color of clicked square and updates the color variable
+document.querySelector('ul').addEventListener('click', function (e) {
+    let style = window.getComputedStyle(e.target);
+    let background = style.backgroundColor;
+    color = background;
 });
-blue.addEventListener('click', () => {
-    color = 'blue';
-});
-yellow.addEventListener('click', () => {
-    color = 'yellow';
-});
-green.addEventListener('click', () => {
-    color = 'green';
-});
-black.addEventListener('click', () => {
-    color = 'black';
-});
-brown.addEventListener('click', () => {
-    color = 'brown';
-});
-purple.addEventListener('click', () => {
-    color = 'purple';
-});
-orange.addEventListener('click', () => {
-    color = 'orange';
-});
-white.addEventListener('click', () => {
-    color = 'white';
-});
-
-//Event listener to change color
-document.querySelector('.grid-container').addEventListener('click', changeColor);
-
-function changeColor(e) {
+//Changes color of calendar square when clicked 
+document.querySelector('.grid-container').addEventListener('click', function(e) {
     //Only targets '.cell day'
     if (e.target.className === 'cell day') {
     e.target.style.background = color;
     //Converts to '.cell checked' to prevent accidental changing of color
     e.target.className = 'cell checked';
-    }   
+    }
+    //Set key/value pairs in local storage (date/color)
+    let key = e.target.innerText 
+    localStorage.setItem(JSON.stringify(key), color);
+});
+//Clear Local Storage Button
+button.addEventListener('click', () => {
+    //Clear storage
+    localStorage.clear();
+    //Loop through days and set to gray
+    for (let i = 0; i < days.length; i++) {
+        days[i].style.background = 'gray';
+    } 
+});
+//----------------------------------------------
+// Load from local storage
+//Loop through days of the month
+for (let i = 0; i < days.length; i++) {
+    //Checks if there is a key:value for the day
+    if (localStorage.getItem(`"${i+1}"`) != null) {
+        //Changes the bg color to reflect the local storage
+        let bgColor = localStorage.getItem(`"${i+1}"`);
+        days[i].style.background = bgColor;
+    }    
 }
-
-

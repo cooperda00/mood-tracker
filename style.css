@@ -93,3 +93,9 @@ main p {
     align-items: center;
     justify-content: center;
 }
+
+button {
+    margin-top: 20px;
+    width: 5%;
+    align-self: center;
+}

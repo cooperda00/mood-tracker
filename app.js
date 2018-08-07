@@ -9,10 +9,16 @@ const days = document.querySelectorAll('.day');
 //Event Listeners:
 //Finds CSS backgroud color of clicked square and updates the color variable
 document.querySelector('ul').addEventListener('click', function (e) {
+    if (e.target.matches('li')) {
     let style = window.getComputedStyle(e.target);
     let background = style.backgroundColor;
     color = background;
+    //Change color of selected-box
+    document.querySelector('.selected-box').style.background = color;
+    }
 });
+//Change color of selected-box
+
 //Changes color of calendar square when clicked 
 document.querySelector('.grid-container').addEventListener('click', function(e) {
     //Find background style of cell

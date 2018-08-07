@@ -1,6 +1,6 @@
 //Variables:
 //Picked Color 
-let color = '';
+let color;
 //Button
 const button = document.querySelector('button');
 //Days 
@@ -15,15 +15,20 @@ document.querySelector('ul').addEventListener('click', function (e) {
 });
 //Changes color of calendar square when clicked 
 document.querySelector('.grid-container').addEventListener('click', function(e) {
-    //Only targets '.cell day'
-    if (e.target.className === 'cell day') {
+    //Find background style of cell
+    let style = window.getComputedStyle(e.target);
+    let background = style.backgroundColor;
+    //Only targets '.cell day' that is gray and with a color selected
+    if (e.target.className === 'cell day' && background === 'rgb(128, 128, 128)' && color != undefined)  {
     e.target.style.background = color;
     //Converts to '.cell checked' to prevent accidental changing of color
     e.target.className = 'cell checked';
-    }
+
     //Set key/value pairs in local storage (date/color)
     let key = e.target.innerText 
     localStorage.setItem(JSON.stringify(key), color);
+    }
+    
 });
 //Clear Local Storage Button
 button.addEventListener('click', () => {

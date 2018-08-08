@@ -5,6 +5,9 @@ let color;
 const button = document.querySelector('button');
 //Days 
 const days = document.querySelectorAll('.day');
+//Color Picker
+const colorsToPick = document.querySelectorAll('li');
+
 //--------------------------------------------
 //Event Listeners:
 //Finds CSS backgroud color of clicked square and updates the color variable
@@ -13,12 +16,15 @@ document.querySelector('ul').addEventListener('click', function (e) {
     let style = window.getComputedStyle(e.target);
     let background = style.backgroundColor;
     color = background;
-    //Change color of selected-box
-    document.querySelector('.selected-box').style.background = color;
+    //Loop through color picker
+    for (let i = 0; i < colorsToPick.length; i++) {
+        //Remove Selected if there is one
+        colorsToPick[i].classList.remove('selected');   
+    }
+    //Add selected to clicked one
+    e.target.classList.toggle("selected");
     }
 });
-//Change color of selected-box
-
 //Changes color of calendar square when clicked 
 document.querySelector('.grid-container').addEventListener('click', function(e) {
     //Find background style of cell
@@ -33,8 +39,7 @@ document.querySelector('.grid-container').addEventListener('click', function(e) 
     //Set key/value pairs in local storage (date/color)
     let key = e.target.innerText 
     localStorage.setItem(JSON.stringify(key), color);
-    }
-    
+    } 
 });
 //Clear Local Storage Button
 button.addEventListener('click', () => {
